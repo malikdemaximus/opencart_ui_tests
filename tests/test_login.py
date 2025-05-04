@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
 from pages.login_page import LoginPage
+from utils.config import BASE_URL
 
 class TestLogin(unittest.TestCase):
     def setUp(self):
@@ -10,13 +11,13 @@ class TestLogin(unittest.TestCase):
 
     def test_login_valid(self):
         login_page = LoginPage(self.driver)
-        login_page.open("http://yourwebsite.com")
+        login_page.open(f"{BASE_URL})
         login_page.go_to_login_page()
         login_page.login("valid_user@example.com", "valid_password")
 
     def test_login_invalid(self):
         login_page = LoginPage(self.driver)
-        login_page.open("http://yourwebsite.com")
+        login_page.open(f"{BASE_URL})
         login_page.go_to_login_page()
         login_page.login("invalid_user@example.com", "invalid_password")
         error_message = login_page.get_warning_message()
